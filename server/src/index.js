@@ -3,15 +3,11 @@ const env=require('dotenv')
 const bodyParser=require('body-parser')
 const { urlencoded } = require('body-parser')
 const mongoose=require('mongoose')
-const UserRoutes = require('./routes/user')
-
-
-
-
+const authUserRoutes = require('./routes/authUser')
+const { AdminRoutes } = require('./routes/admin/authAdmin')
 
 env.config()
 const app=express()
-//.urlencoded({ extended: false })
 app.use(bodyParser());
 
 //connect to the database hosted on mongodb cloud - atlas
@@ -24,9 +20,8 @@ mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGOD
 })
 
 
-app.use('/api',UserRoutes)
-
-
+app.use('/api',authUserRoutes)
+app.use('/api',AdminRoutes)
 app.get('/',(req,res,next)=>{
     res.status(200).json({
         message:'hello ,server is running'
