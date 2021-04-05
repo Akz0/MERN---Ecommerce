@@ -1,12 +1,14 @@
 const UserSchema = require('../models/user')
 const jwt=require('jsonwebtoken')
+
+
 const UserController=(req,res)=>{
     UserSchema.findOne({email:req.body.email}).exec((error,user)=>{
         if(user) return res.status(400).json({
             message:  "User Already Exists"
         })
         const {firstName,lastName,username,email,password}=req.body
-        const _newUser=  new UserSchema ({firstName,lastName,username,email,password})
+        const _newUser=  new UserSchema ({firstName,lastName,username:Math.random().toString(),email,password})
         _newUser.save((error,data)=>{
             if(error){
                 console.log(error)
@@ -41,13 +43,6 @@ const Signin=(req,res)=>{
     })
 }
 
-const requireSignin=(req,res,next)=>{
-    const token=req.headers.authorization.split(' ')[1]
-    const user = jwt.verify(token,process.env.JWT_KEY)
-    req.user=user;
-    next()
-}
 
-exports.requireSignin=requireSignin
 exports.UserController=UserController
 exports.Signin=Signin 

@@ -41,13 +41,6 @@ const Signin=(req,res)=>{
     })
 }
 
-const requireSignin=(req,res,next)=>{
-    const token=req.headers.authorization.split(' ')[1]
-    const user = jwt.verify(token,process.env.JWT_KEY)
-    req.user=user;
-    next()
-}
 
-exports.requireSignin=requireSignin
 exports.UserController=UserController
 exports.Signin=Signin 
