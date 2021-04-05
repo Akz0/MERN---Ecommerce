@@ -45,7 +45,7 @@ const UserSchema=new mongoose.Schema({
     profilePicture:{
         type:String,
     },
-},{timeStamps:true})
+},{timestamps:true})
 
 UserSchema.virtual('password').set(function(password){
     this.hash_password=bcrypt.hashSync(password,10)

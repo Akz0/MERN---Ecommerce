@@ -3,8 +3,11 @@ const env=require('dotenv')
 const bodyParser=require('body-parser')
 const { urlencoded } = require('body-parser')
 const mongoose=require('mongoose')
+
+// routes
 const authUserRoutes = require('./routes/authUser')
 const { AdminRoutes } = require('./routes/admin/authAdmin')
+const CategoryRoutes = require('./routes/category')
 
 env.config()
 const app=express()
@@ -22,6 +25,9 @@ mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGOD
 
 app.use('/api',authUserRoutes)
 app.use('/api',AdminRoutes)
+app.use('/api',CategoryRoutes)
+
+
 app.get('/',(req,res,next)=>{
     res.status(200).json({
         message:'hello ,server is running'
