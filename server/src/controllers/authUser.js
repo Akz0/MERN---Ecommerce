@@ -32,7 +32,7 @@ const Signin=(req,res)=>{
         }
         if(user){
             if(user.authenticate(req.body.password)){
-                const token =   jwt.sign({_id:user._id,role:user.role},process.env.JWT_KEY, {expiresIn:'1h'})
+                const token =   jwt.sign({_id:user._id,role:user.role},process.env.JWT_KEY, {expiresIn:'1d'})
                 const {_id,firstName,lastName,email,role,fullName}=user
                 res.status(200).json({token,user:{_id,firstName,lastName,email,role,fullName}})
             }

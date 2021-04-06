@@ -8,6 +8,7 @@ const mongoose=require('mongoose')
 const authUserRoutes = require('./routes/authUser')
 const { AdminRoutes } = require('./routes/admin/authAdmin')
 const CategoryRoutes = require('./routes/category')
+const ProductRoutes = require('./routes/product')
 
 env.config()
 const app=express()
@@ -26,6 +27,7 @@ mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGOD
 app.use('/api',authUserRoutes)
 app.use('/api',AdminRoutes)
 app.use('/api',CategoryRoutes)
+app.use('/api',ProductRoutes)
 
 
 app.get('/',(req,res,next)=>{
