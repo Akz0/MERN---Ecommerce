@@ -33,7 +33,7 @@ exports.requireSignin=(req,res,next)=>{
     
 }
 
-exports.validateUser=(req,res)=>{
+exports.validateUser=(req,res,next)=>{
     if(req.user.role!=='user') return res.status(400).json({message: 'User Access Denied'})
     next()
 }

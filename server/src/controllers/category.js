@@ -24,9 +24,17 @@ function createCategoriesList(categories,parentID=null){
 
 
 exports.CreateCategory=(req,res)=>{
+
+    let CatImg
+    
+
     let categoryObj={
         name:req.body.name,
-        slug: slugify(req.body.name)
+        slug: slugify(req.body.name),
+    }
+
+    if(req.file){
+        categoryObj.img=  process.env.API +'/public/' + req.file.filename
     }
 
     if(req.body.parentId){
