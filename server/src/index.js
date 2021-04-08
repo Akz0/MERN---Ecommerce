@@ -4,7 +4,7 @@ const bodyParser=require('body-parser')
 const { urlencoded } = require('body-parser')
 const mongoose=require('mongoose')
 const path=require('path')
-
+const cors=require('cors')
 // routes
 const authUserRoutes = require('./routes/authUser')
 const { AdminRoutes } = require('./routes/admin/authAdmin')
@@ -25,6 +25,7 @@ mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGOD
     console.log('Database Connected')
 })
 
+app.use(cors())
 app.use('/public',express.static(path.join(__dirname,'uploads')))
 app.use('/api',authUserRoutes)
 app.use('/api',AdminRoutes)

@@ -4,6 +4,7 @@ import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
 import Home from "./containers/home/home";
 import SignIn from "./containers/signIn/signIn";
 import SignUp from "./containers/signUp/signUp";
+import PrivateRoute from "./components/hoc/PrivateRoute";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
 
       <Router>
         <Switch>
-          <Route path="/" exact component={Home}/>
+          <PrivateRoute path="/" exact component={Home}/>
           <Route path="/signin" exact  component={SignIn}/>
           <Route path="/signup" exact  component={SignUp}/>
         </Switch>
