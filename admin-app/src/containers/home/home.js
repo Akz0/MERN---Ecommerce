@@ -1,5 +1,7 @@
 import React from 'react'
-import { Jumbotron } from 'react-bootstrap'
+import { Col, Container, Row } from 'react-bootstrap'
+import './home.css'
+
 import Layout from '../../components/layouts'
 
 /**
@@ -8,15 +10,25 @@ import Layout from '../../components/layouts'
 **/
 
 const Home = (props) => {
-  return(
-    <Layout>
-      <Jumbotron className="text-center">
+
+
+
+
+    return (
+        <Layout>
+            <Container fluid>
+                <Row>
+                    <Col md={2} className="sidebar">SideBar</Col>
+                    <Col md={10} style={{marginLeft:'auto'}}>Container</Col>
+                </Row>
+            </Container>
+            {/* <Jumbotron className="text-center">
         Admin Home Page
             {props.children}    
-      </Jumbotron>
-    </Layout>
-   )
+      </Jumbotron> */}
+        </Layout>
+    )
 
- }
+}
 
 export default Home

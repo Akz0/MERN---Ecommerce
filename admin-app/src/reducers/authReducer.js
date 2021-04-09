@@ -33,6 +33,11 @@ const authReducer=(state=initState,action) =>{
                 authenticating:false,
             }
             break;
+        case authConstant.LOGOUT_REQUEST:
+            state={
+                ...initState
+            }
+            break;
     }
     console.log(action)
     return state

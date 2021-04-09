@@ -42,6 +42,7 @@ export const login=(user)=>{
     
 }
 
+
 export const isUserLoggedIn=()=>{
     return async dispatch=>{
         const token=localStorage.getItem('token')
@@ -61,5 +62,14 @@ export const isUserLoggedIn=()=>{
                 }
             })
         }
+    }
+}
+
+export const LogOut=()=>{
+    return async dispatch =>{
+        localStorage.clear()
+        dispatch({
+            type:authConstant.LOGOUT_REQUEST
+        })
     }
 }
