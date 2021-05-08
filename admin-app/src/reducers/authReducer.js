@@ -11,7 +11,10 @@ const initState={
         role:'',
     },
     authenticate:false,
-    authenticating:false
+    authenticating:false,
+    loading:false,
+    error:null,
+    message:''
 }
 
 const authReducer=(state=initState,action) =>{
@@ -35,11 +38,23 @@ const authReducer=(state=initState,action) =>{
             break;
         case authConstant.LOGOUT_REQUEST:
             state={
+                ...state,
+                loading:true,
+            }
+            break;
+        case authConstant.LOGOUT_SUCCESS:
+            state={
                 ...initState
             }
             break;
+        case authConstant.LOGOUT_FAILURE:
+            state={
+                ...state,
+                error:action.payload.error,
+                loading:false
+            }
+            break;
     }
-    console.log(action)
     return state
 
 } 

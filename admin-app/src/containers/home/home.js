@@ -1,8 +1,8 @@
 import React from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
 import './home.css'
-
 import Layout from '../../components/layouts'
+
+
 
 /**
 * @author
@@ -15,13 +15,8 @@ const Home = (props) => {
 
 
     return (
-        <Layout>
-            <Container fluid>
-                <Row>
-                    <Col md={2} className="sidebar">SideBar</Col>
-                    <Col md={10} style={{marginLeft:'auto'}}>Container</Col>
-                </Row>
-            </Container>
+        <Layout sidebar>
+            
             {/* <Jumbotron className="text-center">
         Admin Home Page
             {props.children}    

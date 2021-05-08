@@ -7,6 +7,7 @@ const UserRoutes=express.Router()
 
 UserRoutes.post('/admin/signin',SignInValidation,isRequestValid,User.Signin)
 UserRoutes.post('/admin/signup',SignUpValidation,isRequestValid,User.UserController)
+UserRoutes.post('/admin/signout',User.Signout)
 
 UserRoutes.post('/admin/profile',requireSignin,(req,res)=>{
     res.status(200).json({

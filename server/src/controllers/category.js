@@ -1,7 +1,6 @@
 const Category=require('../models/category')
 const slugify=require('slugify')
 
-
 function createCategoriesList(categories,parentID=null){
     let newList=[]
     let category
@@ -15,6 +14,7 @@ function createCategoriesList(categories,parentID=null){
             _id:cat._id,
             name:cat.name,
             slug:cat.slug,
+            parentId:cat.parentID,
             children:createCategoriesList(categories,cat._id)
         })
     }
@@ -22,15 +22,11 @@ function createCategoriesList(categories,parentID=null){
     return newList
 }
 
-
 exports.CreateCategory=(req,res)=>{
-
-    let CatImg
-    
 
     let categoryObj={
         name:req.body.name,
-        slug: slugify(req.body.name),
+        slug:slugify(req.body.name)
     }
 
     if(req.file){
@@ -48,7 +44,7 @@ exports.CreateCategory=(req,res)=>{
         if(category)  {
             
             return res.status(200).json({
-                message:'Category added',
+                message:'Category added Backend',
                 category:category
             })
         }
@@ -70,3 +66,4 @@ exports.fetchCategory=(req,res)=>{
     })
 }
 
+ 

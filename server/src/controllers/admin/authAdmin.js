@@ -30,8 +30,9 @@ const Signin=(req,res)=>{
         }
         if(user){
             if(user.authenticate(req.body.password)  &&  user.role==='admin'){
-                const token =   jwt.sign({_id:user._id,role:user.role},process.env.JWT_KEY, {expiresIn:'1h'})
+                const token =   jwt.sign({_id:user._id,role:user.role},process.env.JWT_KEY, {expiresIn:'20h'})
                 const {_id,firstName,lastName,email,role,fullName}=user
+                res.cookie('token',token,{expiresIn:'20h'})
                 res.status(200).json({token,user:{_id,firstName,lastName,email,role,fullName}})
             }
         }
@@ -41,6 +42,14 @@ const Signin=(req,res)=>{
     })
 }
 
+const Signout=(req,res)=>{
+    res.clearCookie('token')
+    res.status(200).json({
+        message:'Sign Out Successful'
+    })
+}
+
 
 exports.UserController=UserController
 exports.Signin=Signin 
+exports.Signout=Signout

@@ -31,7 +31,6 @@ const registerReducer=(state=initState,action) =>{
             }
             break;
     }
-    console.log(action)
     return state
 
 } 
