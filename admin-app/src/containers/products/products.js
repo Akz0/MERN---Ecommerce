@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Button, Modal,Container,Row,Col,Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { CreateNewProduct } from '../../actions'
