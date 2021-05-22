@@ -9,7 +9,7 @@ const UserController=(req,res)=>{
         })
         const {firstName,lastName,username,email,password}=req.body
         const hash_password=await bcrypt.hash(password,10)
-        const _newUser=  new UserSchema ({firstName,lastName,username:Math.random().toString(),email,hash_password})
+        const _newUser=  new UserSchema ({firstName,lastName,username:email,email,hash_password})
         _newUser.save((error,data)=>{
             if(error){
                 console.log(error)

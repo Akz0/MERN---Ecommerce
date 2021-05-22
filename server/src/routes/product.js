@@ -4,7 +4,7 @@ const shortid=require('shortid')
 const path=require('path')
 
 const { CreateCategory, fetchCategory } = require('../controllers/category')
-const { CreateProduct } = require('../controllers/product')
+const { CreateProduct, getProductsBySlug } = require('../controllers/product')
 const { validateAdmin, requireSignin } = require('../validators/userAdminAuth')
 
 var storage = multer.diskStorage({
@@ -20,6 +20,6 @@ let uploads = multer({ storage: storage })
 
 const ProductRoutes=express.Router()
 ProductRoutes.post('/product/create',requireSignin,validateAdmin,uploads.array('productPicture'),CreateProduct)
-ProductRoutes.get('/product/get',fetchCategory)
+ProductRoutes.get('/product/:slug',getProductsBySlug)
 
 module.exports=ProductRoutes
