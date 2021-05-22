@@ -10,6 +10,9 @@ const CategorySchema = new mongoose.Schema({
         unique:true,
         required:true
     },
+    type:{
+        type:String,
+    },
     img:{type:String},
     parentID:{
         type:String,
