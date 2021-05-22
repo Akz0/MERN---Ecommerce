@@ -1,14 +1,15 @@
 const UserSchema = require('../models/user')
 const jwt=require('jsonwebtoken')
-
+const bcrypt = require('bcrypt')
 
 const UserController=(req,res)=>{
-    UserSchema.findOne({email:req.body.email}).exec((error,user)=>{
+    UserSchema.findOne({email:req.body.email}).exec(async (error,user)=>{
         if(user) return res.status(400).json({
             message:  "User Already Exists"
         })
         const {firstName,lastName,username,email,password}=req.body
-        const _newUser=  new UserSchema ({firstName,lastName,username:Math.random().toString(),email,password})
+        const hash_password=await bcrypt.hash(password,10)
+        const _newUser=  new UserSchema ({firstName,lastName,username:Math.random().toString(),email,hash_password})
         _newUser.save((error,data)=>{
             if(error){
                 console.log(error)
