@@ -88,7 +88,7 @@ const Products = (props) => {
                                 <td>{product.price}</td>
                                 <td>{product.quantity}</td>
                                 {/* <td>{product.productPictures}</td> */}
-                                <td>{product.category.name}</td>
+                                {/* <td>{product.category.id}</td> */}
                             </tr>
                         ):null
                     }
@@ -180,7 +180,7 @@ const Products = (props) => {
                             <label className={classes.key}>Images</label>
                             <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
                                 {detailedProduct.productPictures.map(picture=><div className={classes.productImgContainer}>
-                                    <img src={generatePublicImageUrl(picture.img)}/>
+                                    <img src={generatePublicImageUrl(picture.img)} alt=""/>
                                     </div>
                                 )}
                             </div>

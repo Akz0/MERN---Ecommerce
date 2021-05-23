@@ -20,7 +20,7 @@ function App() {
       dispatch(isUserLoggedIn())
     }
     dispatch(getInitialData())
-  },)
+  },[])
 
 
   return (

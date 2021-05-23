@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal,Button } from 'react-bootstrap'
+import { Modal, Button } from 'react-bootstrap'
 
 
 /**
@@ -8,23 +8,29 @@ import { Modal,Button } from 'react-bootstrap'
 **/
 
 const NewModal = (props) => {
-  return(
-    <div>
-        <Modal size={props.size} show={props.show} onHide={props.handleClose}>
+    return (
+        <div>
+            <Modal size={props.size} show={props.show} onHide={props.handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>{props.modalTitle}</Modal.Title>
                 </Modal.Header>
-                    {props.children}
-                <Modal.Footer>
-                    
-                    <Button variant="primary" onClick={props.handleClose}>
-                        Save
-                    </Button>
+                {props.children}
+                <Modal.Footer >
+                    {
+                        props.buttons ? props.buttons.map((button, index) => {
+                            return <Button key={index} variant={button.color} onClick={button.onClick}>
+                                {button.label}
+                            </Button>
+                        }) : <Button variant="primary" onClick={props.handleClose}>
+                            Save
+                        </Button>
+                    }
+
                 </Modal.Footer>
             </Modal>
-    </div>
-   )
+        </div>
+    )
 
- }
+}
 
 export default NewModal
