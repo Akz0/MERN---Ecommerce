@@ -23,8 +23,8 @@ axiosInstance.interceptors.response.use((response)=>{
     return response
 },error=>{
     console.log(error.response)
-    const {status}=error.response
-    if(status===500){
+    const status=error.response.status
+    if(status && status===500){
         Store.dispatch(LogOut())
     }
     return Promise.reject(error)

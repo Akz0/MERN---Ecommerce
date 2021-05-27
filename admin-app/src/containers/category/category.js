@@ -162,7 +162,7 @@ const Category = (props) => {
 
 
     const renderAddCategoryModal = () => {
-        return <NewModal show={show} handleClose={handleClose} modalTitle='Add New Category'>
+        return <NewModal show={show} hide={()=>setShow(false)} handleClose={handleClose} modalTitle='Add New Category'>
     
             <Modal.Body>
                 <Row>
@@ -199,10 +199,10 @@ const Category = (props) => {
     }
 
     const renderDeleteCategoryModal=()=>{
-        console.log('delete - checked',checkedArray)
         return (
             <NewModal 
             show={showDeleteModal} 
+            hide={()=>setShowDeleteModal(false)}
             handleClose={()=>setShowDeleteModal(false)} 
             modalTitle='Confirm Deletion of Categories'
             buttons={[
@@ -284,6 +284,7 @@ const Category = (props) => {
             <UpdateCategoriesModal
                 show={showUpdateModal}
                 handleClose={handleEditCategories}
+                hide={()=>setShowUpdateModal(false)}
                 modalTitle={'Edit / Update Categories'}
                 size="lg"
                 expandedArray={expandedArray}

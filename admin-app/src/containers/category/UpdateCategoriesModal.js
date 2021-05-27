@@ -5,12 +5,12 @@ import { Row, Col, Modal } from 'react-bootstrap'
 
 const UpdateCategoriesModal = (props) => {
     const {
-        size,show,handleClose,modalTitle,expandedArray,checkedArray,handleCategoryInput,CategoryList
+        hide,size,show,handleClose,modalTitle,expandedArray,checkedArray,handleCategoryInput,CategoryList
     } = props
 
     return (
 
-        <NewModal show={show} handleClose={handleClose} modalTitle={modalTitle} size={size}>
+        <NewModal show={show} handleClose={handleClose} hide={hide} modalTitle={modalTitle} size={size}>
             <Modal.Body>
                 <Row>
                     <Col>
@@ -65,7 +65,7 @@ const UpdateCategoriesModal = (props) => {
                                     </select>
                                 </Col>
                                 <Col>
-                                    <select className='form-control' value={item.type} onChange={e => handleCategoryInput('type', e.target.value, index, 'expanded')}>
+                                    <select className='form-control' value={item.type} onChange={e => handleCategoryInput('type', e.target.value, index, 'checked')}>
                                         <option>Select Type</option>
                                         <option value="store">Store</option>
                                         <option value="product">Product</option>

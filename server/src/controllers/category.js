@@ -16,6 +16,7 @@ function createCategoriesList(categories,parentID=null){
             name:cat.name,
             slug:cat.slug,
             parentId:cat.parentID,
+            type:cat.type,
             children:createCategoriesList(categories,cat._id)
         })
     }
@@ -109,7 +110,7 @@ exports.DeleteCategories=async (req,res)=>{
         deletedCategories.push(deletedCategory)
     }
     if(deletedCategories.length===ids.length){
-        res.status(201).json({
+        res.status(200).json({
             deletedCategories:deletedCategories,
             message:'Deletion Successfull'
         })

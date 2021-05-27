@@ -11,6 +11,7 @@ const { AdminRoutes } = require('./routes/admin/authAdmin')
 const CategoryRoutes = require('./routes/category')
 const ProductRoutes = require('./routes/product')
 const CartRoutes = require('./routes/cart')
+const {PageRoutes}= require('./routes/admin/pageRoutes')
 const { InitialDataRoutes } = require('./routes/admin/initialData')
 
 env.config()
@@ -34,6 +35,7 @@ app.use('/api',CategoryRoutes)
 app.use('/api',ProductRoutes)
 app.use('/api',CartRoutes)
 app.use('/api',InitialDataRoutes)
+app.use('/api',PageRoutes)
 
 app.get('/',(req,res,next)=>{
     res.status(200).json({

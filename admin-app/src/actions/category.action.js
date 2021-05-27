@@ -72,7 +72,7 @@ export const EditCategory=(form)=>{
             dispatch(getAllCategory())   
         }
         else{
-            const {error}=res
+            const {error}=res.data
             dispatch({
                 type:categoryConstant.EDIT_CATEGORIES_FAILURE,
                 payload:{error:error}
@@ -90,11 +90,11 @@ export const DeleteCategory=(ids)=>{
                 ids
             }
         })
-        if(res.status===201){
+        if(res.status===200){
             dispatch({type:categoryConstant.DELETE_CATEGORIES_SUCCESS})
             dispatch(getAllCategory())
         }else{
-            const {error}=res
+            const {error}=res.data
             dispatch({
                 type:categoryConstant.DELETE_CATEGORIES_FAILURE,
                 payload:{error:error}

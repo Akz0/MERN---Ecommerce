@@ -16,6 +16,7 @@ function createCategoriesList(categories,parentID=null){
             name:cat.name,
             slug:cat.slug,
             parentId:cat.parentID,
+            type:cat.type,
             children:createCategoriesList(categories,cat._id)
         })
     }
